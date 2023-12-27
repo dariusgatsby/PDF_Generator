@@ -13,7 +13,9 @@ for index, pages in topics.iterrows():
     pdf.set_font(family="Times", style='B', size=24)
     pdf.set_text_color(100, 100, 100)
     pdf.cell(w=0, h=12, txt=pages['Topic'], ln=1, align='L')
-    pdf.line(10, 20, 200, 20)
+    for y in range(20, 298, 10):
+        pdf.line(10, y, x2=200, y2=y)
+
 
     # Set Footer
     pdf.ln(265)
@@ -29,5 +31,8 @@ for index, pages in topics.iterrows():
         pdf.set_font(family="Times", style='I', size=8)
         pdf.set_text_color(180, 180, 180)
         pdf.cell(w=0, h=10, txt=pages['Topic'], align='R')
+
+        for y in range(20, 298, 8):
+            pdf.line(10, y, x2=200, y2=y)
 
 pdf.output('output.pdf')
